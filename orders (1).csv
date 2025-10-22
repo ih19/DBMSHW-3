@@ -1,0 +1,4 @@
+oid,shipping_method,shipping_cost
+1,UPS,25.00
+2,FedEx,30.50
+3,USPS,20.00
