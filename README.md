@@ -1,69 +1,112 @@
-Assume the following relations, where underlined attributes are primary or foreign keys:
+# Database Management Systems – Assignment 3
 
-merchants(mid, name, city, state)
-products(pid, name, category, description)
-sell(mid, pid, price, quantity_available)
-orders(oid, shipping_method, shipping_cost)
-contain(oid, pid)
-customers(cid, fullname, city, state)
-place(cid, oid, order_date)
- 
+## Project Overview
+This repository contains SQL queries, entity-relationship diagrams (ERDs), and documentation for **Database Assignment 3**.  
+The purpose of this project is to apply concepts of relational modeling, integrity constraints, and SQL querying to a multi-table database representing an e-commerce system.
 
-The data tables can be found here: https://github.com/bforoura/DBMS/tree/master/HW3Links to an external site.
+---
 
- 
+## Database Schema
 
-For each of the following questions write a SQL query:
+### Relations
+The database includes the following relations, where underlined attributes represent primary or foreign keys:
 
-List names and sellers of products that are no longer available (quantity=0)
-List names and descriptions of products that are not sold.
-How many customers bought SATA drives but not any routers?
-HP has a 20% sale on all its Networking products.
-What did Uriel Whitney order from Acer? (make sure to at least retrieve product names and prices).
-List the annual total sales for each company (sort the results along the company and the year attributes).
-Which company had the highest annual revenue and in what year?
-On average, what was the cheapest shipping method used ever?
-What is the best sold ($) category for each company?
-For each company find out which customers have spent the most and the least amounts.
- 
+- **merchants**(`mid`, name, city, state)  
+- **products**(`pid`, name, category, description)  
+- **sell**(`mid`, `pid`, price, quantity_available)  
+- **orders**(`oid`, shipping_method, shipping_cost)  
+- **contain**(`oid`, `pid`)  
+- **customers**(`cid`, fullname, city, state)  
+- **place**(`cid`, `oid`, order_date)
 
- 
+### Data Source
+The data files used in this assignment are available at:  
+[https://github.com/bforoura/DBMS/tree/master/HW3](https://github.com/bforoura/DBMS/tree/master/HW3)
 
- 
+---
 
-General Guidelines
+## Setup Instructions
 
-Import the tables into MySQL.
+1. Import all tables into MySQL using the provided data files.
+2. Define **primary and foreign key constraints** according to the schema above.
+3. Apply the following **column constraints**:
 
-Your tables must have primary or foreign key constraints along with these constraints:
+| Table | Constraint |
+|--------|------------|
+| `products.name` | Must be one of: Printer, Ethernet Adapter, Desktop, Hard Drive, Laptop, Router, Network Card, Super Drive, Monitor |
+| `products.category` | Must be one of: Peripheral, Networking, Computer |
+| `sell.price` | Between 0 and 100,000 |
+| `sell.quantity_available` | Between 0 and 1,000 |
+| `orders.shipping_method` | Must be one of: UPS, FedEx, USPS |
+| `orders.shipping_cost` | Between 0 and 500 |
+| `place.order_date` | Must be a valid date |
 
-Products name constraint: Printer, Ethernet Adapter, Desktop, Hard Drive, Laptop, Router, Network Card, Super Drive, Monitor
-Products category constraint: Peripheral, Networking, Computer
-Sell price constraint: between 0 and 100,000
-Sell quantity_available constraint: between 0 and 1,000
-Orders shipping_method constraint: UPS, FedEx, USPS
-Orders shipping_cost constraint: between 0 and 500
-Valid dates
- 
+---
 
- 
+## SQL Questions
 
-Report Submission Guidelines
+Each of the following questions is addressed in the accompanying `HW3.sql` file.  
 
-Title Page
+1. List names and sellers of products that are no longer available (quantity = 0).  
+2. List names and descriptions of products that are not sold.  
+3. Determine how many customers bought SATA drives but not any routers.  
+4. Apply a 20% sale for HP’s Networking products.  
+5. Retrieve all products (names and prices) ordered from Acer by Uriel Whitney.  
+6. List the annual total sales for each company, sorted by company and year.  
+7. Identify the company with the highest annual revenue and the corresponding year.  
+8. Determine the average cheapest shipping method ever used.  
+9. Identify the best-selling (by dollar amount) category for each company.  
+10. For each company, find which customers spent the most and least overall.
 
-Title: DB Assignment 3
-Your Name: 
-Date: 
- 
+---
 
-SQL Section
+## Report Submission Guidelines
 
-Clearly identify each problem.
-Include the complete documented SQL query used to solve the problem.
-Provide a screenshot of the query results from Workbench along with the ERD diagram. Ensure screenshots are clear and include the results.
-Briefly explain in words what the query does and how it solves the problem. 
-Upload the complete PDF report (HW3.pdf) and the well-documented SQL script (HW3.sql) to your GitHub repo. 
-Documentation counts as 10% of the total grade in this assignment.
-Submit the link to your GitHub repo.
-Please read the syllabus statement on late submissions.
+### Title Page
+Include the following:
+- Title: **DB Assignment 3**  
+- Student Name  
+- Date  
+
+### SQL Section
+For each problem:
+- Clearly identify the question number.  
+- Provide the complete and properly commented SQL query used to solve the problem.  
+- Include a clear screenshot of the query output from MySQL Workbench.  
+- Briefly explain what the query does and how it answers the question.  
+- Include the ERD diagram of the database.
+
+---
+
+## Deliverables
+
+| File | Description |
+|------|-------------|
+| `DBMS Assignment#3.docx` | Full report including queries, explanations, ERD, and screenshots |
+| `HW#3.sql` | Well-documented SQL script with all queries |
+| `README.md` | Project overview and submission details |
+
+**Note:** Documentation quality accounts for 10% of the total grade.
+
+---
+
+## Submission Instructions
+
+- Upload all required files to your GitHub repository.  
+- Submit the repository link according to the course submission procedure.  
+- Late submissions will follow the policy outlined in the course syllabus.
+
+---
+
+## Notes
+- Verify that all constraints are correctly implemented in the database.  
+- Ensure that primary and foreign key relationships are valid.  
+- Use clear, properly formatted SQL code and include inline comments for readability.
+
+---
+
+**Author:** [Ihor Holubets]  
+**Course:** Database Management Systems  
+**Instructor:** [Dr. Babak Forouraghi] 
+**Date:** [10/21/25]  
+
