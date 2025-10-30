@@ -62,12 +62,6 @@ Each of the following questions is addressed in the accompanying `HW3.sql` file.
 
 ## Report Submission Guidelines
 
-### Title Page
-Include the following:
-- Title: **DB Assignment 3**  
-- Student Name  
-- Date  
-
 ### SQL Section
 For each problem:
 - Clearly identify the question number.  
